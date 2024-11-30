@@ -1,0 +1,19 @@
+{% extends "Authentication_System/layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="welcome-message">
+        <h1>Welcome back, <span class="username">{{ user.username }}</span>!</h1>
+        <p class="subheading">You're all set to explore your account.</p>
+    </div>
+
+    <div class="logout-container">
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-logout">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

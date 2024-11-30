@@ -1,0 +1,266 @@
+/* Global styles */
+body {
+    background-color: #283436;  /* Slightly lighter dark background */
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.1rem;  /* Increase font size for better readability */
+}
+
+/* Auth wrapper with rounded corners and shadow */
+.auth-wrapper {
+    width: 100%;
+    max-width: 450px;
+    padding: 2.5rem;
+    background-color: #192126;
+    border-radius: 10px;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.4);
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Heading style with modern font */
+h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f0f0f0;
+}
+
+/* Button style with a sleek color */
+button {
+    background-color: #5a9efc;  /* Modern blue button */
+    color: white;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for the button */
+button:hover {
+    background-color: #4682b4;
+    transform: translateY(-3px) scale(1.05);  /* Added scale effect */
+}
+
+/* Link style for text-center with hover effect */
+.text-center a {
+    color: #5a9efc;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.text-center a:hover {
+    color: #4682b4;
+}
+
+/* Form control styling with modern inputs */
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #383838;
+    color: #eaeaea;
+    font-size: 1rem;
+}
+
+.form-control::placeholder {
+    color: #888;
+}
+
+.form-control:focus {
+    border-color: #5a9efc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(90, 158, 252, 0.5);  /* Soft glow effect */
+}
+
+/* Error and Success Message Popups */
+#message-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#message-popup.hidden {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Success and Error Message Styles */
+.success {
+    background-color: #28a745;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.error {
+    background-color: #dc3545;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.warning {
+    background-color: #ffc107;
+    color: black;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Form-group label for better accessibility */
+.form-group label {
+    font-size: 1rem;
+    color: #ddd;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Home container for the Welcome Page */
+.home-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #313030;
+    border-radius: 12px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.welcome-message h1 {
+    font-size: 2.5rem;
+    color: #eaeaea;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.username {
+    color: #007bff; /* Highlight the username */
+}
+
+.subheading {
+    color: #7a7a7a;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.logout-container {
+    margin-top: 2rem;
+}
+
+.btn-logout {
+    background-color: #007bff; /* Bright blue color for the button */
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px; /* Rounded edges for a modern look */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-logout:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+    transform: scale(1.05); /* Button scales slightly on hover */
+}
+
+.btn-logout:focus {
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-container {
+        margin: 2rem;
+        padding: 1.5rem;
+    }
+
+    .welcome-message h1 {
+        font-size: 2rem;
+    }
+
+    .btn-logout {
+        padding: 0.8rem 2rem;
+    }
+
+    .auth-wrapper {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-wrapper {
+        padding: 1rem;
+    }
+
+    .home-container {
+        padding: 1rem;
+    }
+}
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.toggle-password:hover {
+    color: #5a9efc;  /* Change color on hover */
+}
+.form-group {
+    position: relative;
+}
+

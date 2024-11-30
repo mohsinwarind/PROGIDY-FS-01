@@ -1,0 +1,38 @@
+{% extends "Authentication_System/layout.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <p class="text-center">
+        <a href="{% url 'signup' %}">Don't have an account? Sign Up</a>
+    </p>
+</div>
+
+<!-- Placeholder for error/success messages -->
+<div id="message-popup" class="hidden"></div>
+
+<script>
+    // Function to show success or error messages as popups
+    function showMessage(type, message) {
+        const messagePopup = document.getElementById('message-popup');
+        messagePopup.innerHTML = `<div class="${type}">${message}</div>`;
+        messagePopup.style.display = 'block';
+        
+        setTimeout(() => {
+            messagePopup.style.display = 'none';  // Hide the message after 3 seconds
+        }, 3000);
+    }
+
+    // Example of calling the function for a success message:
+    // showMessage('success', 'Login successful!');
+    
+    // Example of calling the function for an error message:
+    // showMessage('error', 'Invalid credentials!');
+</script>
+{% endblock %}

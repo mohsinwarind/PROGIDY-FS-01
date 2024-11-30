@@ -1,0 +1,78 @@
+{% extends "Authentication_System/layout.html" %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <h2>Sign Up</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Username field -->
+        <div class="form-group">
+            <label for="id_username">Username</label>
+            {{ form.username }}
+        </div>
+
+        <!-- Email field -->
+        <div class="form-group">
+            <label for="id_email">Email address</label>
+            {{ form.email }}
+        </div>
+
+        <!-- Password field with a toggle visibility option -->
+        <div class="form-group">
+            <label for="id_password1">Password</label>
+            {{ form.password1 }}
+            <span class="toggle-password" id="togglePassword1" onclick="togglePasswordVisibility('id_password1')">
+                <i class="fas fa-eye"></i> <!-- Eye icon -->
+            </span>
+        </div>
+
+        <!-- Confirm Password field with a toggle visibility option -->
+        <div class="form-group">
+            <label for="id_password2">Confirm Password</label>
+            {{ form.password2 }}
+            <span class="toggle-password" id="togglePassword2" onclick="togglePasswordVisibility('id_password2')">
+                <i class="fas fa-eye"></i> <!-- Eye icon -->
+            </span>
+        </div>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <p class="text-center">
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+    </p>
+</div>
+
+<!-- Placeholder for error/success messages -->
+<div id="message-popup" class="hidden"></div>
+
+<script>
+    // Toggle password visibility
+    function togglePasswordVisibility(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const icon = document.getElementById('togglePassword' + fieldId.charAt(fieldId.length - 1));
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+
+        // Toggle the eye icon between open and closed
+        if (type === 'password') {
+            icon.innerHTML = '<i class="fas fa-eye"></i>';
+        } else {
+            icon.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Eye-slash for visible password
+        }
+    }
+
+    // Function to show success or error messages as popups
+    function showMessage(type, message) {
+        const messagePopup = document.getElementById('message-popup');
+        messagePopup.innerHTML = `<div class="${type}">${message}</div>`;
+        messagePopup.style.display = 'block';
+        
+        setTimeout(() => {
+            messagePopup.style.display = 'none';  // Hide the message after 3 seconds
+        }, 3000);
+    }
+</script>
+
+{% endblock %}
